@@ -5,10 +5,9 @@ import currentWeatherAtom from "@/modules/Home/atoms/currentWeatherAtom.js";
 import {useAtom} from "jotai";
 
 const hero = () => {
-    const [{data, isLoading, error}] = useAtom(currentWeatherAtom)
+    const [{data, isPending, error}] = useAtom(currentWeatherAtom)
 
     const weatherIcon = data?.weather?.[0]?.icon
-    // const weatherIcon = Array.isArray(data?.weather) && data?.weather[0]?.icon
 
     const temp = data?.main?.temp
     const desc = data?.weather?.[0]?.description
@@ -17,11 +16,11 @@ const hero = () => {
     const humidity = data?.main?.humidity
     const rain = data?.rain?.["1h"]
 
-    console.log(wind, humidity, data, rain)
-
     return (
-        <div>
-            <Logo id={weatherIcon} />
+        <div className={"flex flex-col justify-center items-center gap-4"}>
+            <div className={"w-[200px]"}>
+                <Logo id={weatherIcon} />
+            </div>
             <Temp {...{temp, desc}} />
             <WeatherDetail {...{wind, humidity, rain}} />
         </div>
