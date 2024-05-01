@@ -7,7 +7,15 @@ export const getCities = async ({queryKey: [, q]}) => {
         params: {q, limit:3, appid:import.meta.env.VITE_OPEN_WEATHER_API_KEY}
     })
 
+    return data
+}
 
+const currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather"
+
+export const getCurrentWeather = async ({queryKey: [, {lat, lon}]}) => {
+    const {data} = await axios.get(currentWeatherUrl, {
+        params: {lat, lon, units: "metric", appid:import.meta.env.VITE_OPEN_WEATHER_API_KEY}
+    })
 
     return data
 }

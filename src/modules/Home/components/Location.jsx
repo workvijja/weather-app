@@ -9,7 +9,7 @@ import {citiesAtom, searchCityAtom, selectedCityAtom} from "@/modules/Home/atoms
 
 const location = () => {
     const [searchCity, setSearchCity] = useAtom(searchCityAtom)
-    const [{data, isLoading, error}] = useAtom(citiesAtom)
+    const [{data, isPending, error}] = useAtom(citiesAtom)
     const [open, setOpen] = useState(false)
     const [{name}, setCity] = useAtom(selectedCityAtom)
 
@@ -26,7 +26,7 @@ const location = () => {
                 <Command shouldFilter={false}>
                     <CommandInput value={searchCity} onValueChange={handleSearch} placeholder="Search city..." />
                     <CommandList>
-                        <CommandEmpty>{isLoading ? "Loading..." : "No city found."}</CommandEmpty>
+                        <CommandEmpty>{isPending ? "Loading..." : "No city found."}</CommandEmpty>
                         <CommandGroup>
                         {
                             data.map((c, i) => (
