@@ -20,3 +20,12 @@ export const getCurrentWeather = async ({queryKey: [, {lat, lon}]}) => {
     return data
 }
 
+const weatherForecastUrl = "https://api.openweathermap.org/data/2.5/forecast"
+
+export const getWeatherForecast = async ({queryKey: [,, {lat, lon}]}) => {
+    const {data} = await axios.get(weatherForecastUrl, {
+        params: {lat, lon, units: "metric", appid:import.meta.env.VITE_OPEN_WEATHER_API_KEY}
+    })
+
+    return data
+}

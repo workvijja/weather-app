@@ -5,7 +5,7 @@ import {useAtom} from "jotai";
 import {useState} from "react";
 import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
 import {cn} from "@/lib/utils.js";
-import {citiesAtom, searchCityAtom, selectedCityAtom} from "@/modules/Home/atoms";
+import {citiesAtom, searchCityAtom, selectedCityAtom} from "@/atoms";
 
 const location = () => {
     const [searchCity, setSearchCity] = useAtom(searchCityAtom)

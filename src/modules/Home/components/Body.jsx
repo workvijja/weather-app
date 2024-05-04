@@ -1,12 +1,19 @@
+import HourlyWeather from "@/modules/Home/components/HourlyWeather.jsx";
+import {Button} from "@/components/ui/button.jsx";
+import {ArrowRight} from "lucide-react";
+
 const body = () => {
-    // sm > vertical scroll, more detailed card
-    // sm < horizontal scroll, less detailed card
 
     return (
-        <>
-        {/*    TODO NAVIGATION*/}
-        {/*    TODO TODAY HOURLY WEATHER*/}
-        </>
+        <div className={"border shadow-sm rounded-lg p-4 w-full h-full grid grid-cols-1 grid-rows-8 gap-4"}>
+            <div className={"col-span-1 row-span-1 flex items-center justify-between gap-4"}>
+                <h1 className={"text-md font-bold"}>Today</h1>
+                <Button variant={"link"} className={"opacity-50 p-0"}>Forecast <ArrowRight className={"w-4 h-4 ml-1"} /></Button>
+            </div>
+            <div className={"col-span-1 row-span-7"}>
+                <HourlyWeather/>
+            </div>
+        </div>
     )
 }
 
