@@ -34,7 +34,6 @@ const location = () => {
                                     key={i}
                                     value={c.name}
                                     onSelect={(currentValue) => {
-                                        console.log(currentValue)
                                         setCity(currentValue === name ? {} : c)
                                         setOpen(false)
                                     }}

@@ -3,28 +3,22 @@ import WeatherCard from "@/components/WeatherCard.jsx";
 import {ScrollArea, ScrollBar} from "@/components/ui/scroll-area.jsx";
 import {Separator} from "@/components/ui/separator.jsx";
 import moment from "moment";
-import groupedDateWeatherForecastAtom from "@/atoms/groupedDateWeatherForecastAtom.js";
-import {useMemo} from "react";
+import weatherForecastAtom from "@/atoms/weatherForecastAtom.js";
 
-const hourlyWeather = () => {
-    const [{data, isPending, error}] = useAtom(groupedDateWeatherForecastAtom)
-
-    const todayForecast = useMemo(() => {
-        const today = moment(new Date()).format("YYYY-MM-DD")
-        return data?.[today] ?? []
-    }, [data])
+const forecastList = () => {
+    const [{data, isPending, error}] = useAtom(weatherForecastAtom)
 
     return (
         <ScrollArea className={"w-full h-full"}>
             <div className={"w-full"}>
-                {todayForecast.map((d) => (
+                {data?.list?.map((d) => (
                     <>
                         <WeatherCard
                             key={d?.dt}
                             temp={d?.main?.temp}
                             weatherId={d?.weather?.[0]?.icon}
                             weather={d?.weather?.[0]?.main}
-                            weatherTime={moment(d?.dt * 1000).format("HH:mm")}
+                            weatherTime={moment(d?.dt * 1000).format("D MMM HH:mm")}
                         />
                         <Separator orientation={"horizontal"} />
                     </>
@@ -35,4 +29,4 @@ const hourlyWeather = () => {
     )
 }
 
-export default hourlyWeather
+export default forecastList

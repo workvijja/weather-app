@@ -1,4 +1,4 @@
-import Location from "@/modules/Home/components/Location";
+import Location from "@/components/Location";
 
 const header = () => {
     return (

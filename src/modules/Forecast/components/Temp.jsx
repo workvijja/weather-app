@@ -1,0 +1,11 @@
+const temp = ({temp, desc}) => {
+    return (
+        <div className={"flex flex-col items-center"}>
+            <p className={"text-md"}>Tomorrow</p>
+            <h1 className={"text-7xl font-bold"}>{temp ?? 0}°</h1>
+            <p className={"text-xl opacity-50"}>{desc}</p>
+        </div>
+    )
+}
+
+export default temp

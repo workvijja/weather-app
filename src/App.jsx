@@ -1,11 +1,15 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import Home from "@/modules/Home/index.jsx";
-import {Card, CardContent} from "@/components/ui/card.jsx";
+import Forecast from "@/modules/Forecast/index.jsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Home/>
+    },
+    {
+        path: "/forecast",
+        element: <Forecast/>
     }
 ])
 
